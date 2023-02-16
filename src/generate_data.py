@@ -234,8 +234,13 @@ def eng_lvl():
 
 
 
+#Tipo de documento
+#EPS
 #Creditos totales de la carrera
 #Creditos cursados y faltantesv
+#Creditos semestre actual
+#Libreta militar
+#Alergias
 #Deuda
 #id_Enlace
 #Asiganturas canceladas y perdidas
@@ -243,3 +248,4 @@ def eng_lvl():
 # Pais y ciudad de nacimiento
 # Estado civil
 # Correo acudiente
+# Monitor
