@@ -1,7 +1,7 @@
 
 
 import generate_data as data
-import  table as t
+import table as t
 
 
 if __name__ == '__main__':

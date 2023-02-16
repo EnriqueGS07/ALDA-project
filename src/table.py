@@ -1,6 +1,7 @@
 import pandas as pd
 import generate_data as data
 
+
 def create_table(rows):
     table = pd.DataFrame()
     ids = set()
@@ -18,6 +19,25 @@ def create_table(rows):
     births = []
     ages = []
     atts = []
+    cell_at = []
+    degrees = []
+    costs = []
+    strats = []
+    enroles = []
+    t_avg = []
+    p_avg = []
+    states = []
+    progs = []
+    plans = []
+    adds = []
+    ctys = []
+    sems = []
+    p_cred = []
+    pens = []
+    fins = []
+    fins_e = []
+    fams = []
+    eng_lvls = []
     for i in range(rows):
         list_id += [data.id_num(ids)]
         eci_nums += [data.eci_number(eci_ids)]
@@ -32,6 +52,25 @@ def create_table(rows):
         births += [data.birth(list_id[i])]
         ages += [data.age(births[i])]
         atts += [data.attendant(last_names[i])]
+        cell_at += [data.cellphone()]
+        degrees += [data.degree(roles[i])]
+        strats += [data.stratum()]
+        costs += [data.semester_cost(strats[i], roles[i])]
+        enroles += [data.start_year(roles[i])]
+        t_avg += [data.total_average(roles[i])]
+        p_avg += [data.partial_average(roles[i], t_avg[i])]
+        states += [data.degree_state(roles[i])]
+        progs += [data.academic_program(degrees[i])]
+        plans += [data.program_state(roles[i])]
+        pens += [data.academic_plan(progs[i])]
+        ctys += [data.living_city()]
+        adds += [data.adress(ctys[0])]
+        sems += [data.semester(roles[i], states[i])]
+        p_cred += [data.credits_percent(sems[i])]
+        fins += [data.financing(roles[i])]
+        fins_e += [data.fin_entity(fins[i])]
+        fams += [data.family()]
+        eng_lvls += [data.eng_lvl()]
     table["Documento de identidad"] = list_id
     table["# carnet"] = eci_nums
     table["Nombre"] = names
@@ -41,9 +80,28 @@ def create_table(rows):
     table["Cargo"] = roles
     table["Correo Ins"] = a_mails
     table["Telefono"] = cells
+    table["Ciudad residencia"] = ctys
+    table["Direccion residencia"] = adds
     table["Tipo de sangre"] = bloods
     table["Fecha nacimiento"] = births
     table["Edad"] = ages
     table["Acudiente"] = atts
+    table["Tel. Acudiente"] = cell_at
+    table["Carrera"] = degrees
+    table["Programa academico"] = progs
+    table["Plan acaemico"] = pens
+    table["Estado Programa"] = plans
+    table["Estado carrera"] = states
+    table["Semestre"] = sems
+    table["Matricula"] = costs
+    table["Estrato"] = strats
+    table["Año de admisión"] = enroles
+    table["Promedio acomulado"] = t_avg
+    table["Promedio semestre"] = p_avg
+    table["% creditos aprovados"] = p_cred
+    table["Financiado"] = fins
+    table["Entidad que lo financia"] = fins_e
+    table["Familiares en la Escela"] = fams
+    table["Nivel de ingles"] = eng_lvls
     print(table)
 

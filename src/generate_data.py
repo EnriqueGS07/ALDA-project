@@ -4,8 +4,6 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 
-
-
 def id_num(set_ids):
     value = random.randint(70000000, 1199999999)
     while value in set_ids:
@@ -165,6 +163,7 @@ def partial_average(role, avg):
         return note if note <= 5.0 else 4.8
 
 
+#Corregir fevha de nacimiento con año de inicio
 def start_year(role):
     return random.randint(1980, 2023) if role != "Estudiante" else random.randint(2018, 2023)
 
@@ -214,3 +213,33 @@ def credits_percent(sem):
     else:
         return str(sem*10 + random.randint(-10, 10)) + "%"
 
+
+def financing(role):
+    if role != "Estudiante":
+        return "N/A"
+    else:
+        return random.choices(["Si", "No"], weights=[2, 1])[0]
+
+def fin_entity(finan):
+    entities = ["ICETEX", "Generacion E", "Pilo paga", "Fondo solidario"]
+    return "N/A" if finan == "N/A" or finan == "No" else random.choice(entities)
+
+
+def family():
+    return random.choice(["SI", "NO"])
+
+
+def eng_lvl():
+    return random.choices(["A2", "B1", "B2", "C1"], weights=[2, 3, 4, 2])
+
+
+
+#Creditos totales de la carrera
+#Creditos cursados y faltantesv
+#Deuda
+#id_Enlace
+#Asiganturas canceladas y perdidas
+#Peridoo que se gradua
+# Pais y ciudad de nacimiento
+# Estado civil
+# Correo acudiente

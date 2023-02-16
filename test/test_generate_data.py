@@ -39,7 +39,8 @@ class GenerateTest(unittest.TestCase):
                                                             or "yahoo" in mail))
 
     def test_cc(self):
-        num = data.id_num()
+        ids = set()
+        num = data.id_num(ids)
         role = data.rol(num)
         roles = ["Admin", "Estudiante", "Profesor"]
         self.assertTrue(role in roles)
@@ -58,11 +59,13 @@ class GenerateTest(unittest.TestCase):
         self.assertTrue(blood in results)
 
     def test_birth(self):
-        cc = data.id_num()
+        ids = set()
+        cc = data.id_num(ids)
         self.assertTrue(isinstance(data.birth(cc), date))
 
     def test_age(self):
-        cc = data.id_num()
+        ids = set()
+        cc = data.id_num(ids)
         date = data.birth(cc)
         self.assertTrue(16 <= data.age(date) < 80 )
 
