@@ -4,31 +4,29 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 
-ids = set()
-eci_nums = set()
 
 
-def id_num():
+def id_num(set_ids):
     value = random.randint(70000000, 1199999999)
-    while value in ids:
+    while value in set_ids:
         value = random.randint(70000000, 1199999999)
-    ids.add(value)
+    set_ids.add(value)
     return value
 
 
-def eci_number():
+def eci_number(set_ids):
     year = random.randint(2018, 2023)
     if year <= 2019:
         value = int("216" + str(random.randint(1111, 9999)))
-        while value in ids:
+        while value in set_ids:
             value = int("216" + str(random.randint(1111, 9999)))
-        eci_nums.add(value)
+        set_ids.add(value)
         return value
     else:
         value = int("10000" + str(random.randint(11111, 99999)))
-        while value in ids:
+        while value in set_ids:
             value = int("10000" + str(random.randint(11111, 99999)))
-        eci_nums.add(value)
+        set_ids.add(value)
         return value
 
 
@@ -81,6 +79,7 @@ def last_name():
 
 
 def personal_mail(user_n, lastname):
+    lastname = lastname.split(" ")[0]
     user1 = user_n + lastname + str(random.randint(1, 999))
     user2 = user_n + "." + lastname + random.choice(string.ascii_letters)
     user3 = user_n + lastname + random.choice(string.ascii_letters)
@@ -96,7 +95,7 @@ def rol(cc):
 
 
 def eci_mail(user_n, lastname, role):
-    user = user_n + "." + lastname
+    user = user_n + "." + lastname.split(" ")[0]
     return user + "@mail.escuelaing.edu.co" if role == "Estudiante" else user + "@escuelaing.edu.co"
 
 

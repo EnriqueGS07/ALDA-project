@@ -1,4 +1,3 @@
-import random
 import unittest
 from datetime import date
 import src.generate_data as data
@@ -7,12 +6,14 @@ import src.generate_data as data
 class GenerateTest(unittest.TestCase):
 
     def test_id(self):
-        id_num = str(data.id_num())
+        ids = set()
+        id_num = str(data.id_num(ids))
         self.assertTrue(8 <= len(id_num) <= 10)
 
     def test_eci_num(self):
+        eci_ids = set()
         pas = True
-        num = str(data.eci_number())
+        num = str(data.eci_number(eci_ids))
         if num[0] == "2" and len(num) != 7:
             pas = False
         elif num[0] == "1" and len(num) != 10:
