@@ -20,6 +20,7 @@ def create_table(rows):
     ages = []
     atts = []
     cell_at = []
+    mail_at = []
     degrees = []
     costs = []
     strats = []
@@ -38,6 +39,23 @@ def create_table(rows):
     fins_e = []
     fams = []
     eng_lvls = []
+    type_docs = []
+    epss = []
+    total_creds = []
+    ap_creds = []
+    l_creds = []
+    ac_creds = []
+    armys = []
+    allys = []
+    debts = []
+    portal_ids = []
+    cancell = []
+    losts = []
+    exp_years = []
+    countries = []
+    b_cities = []
+    c_states = []
+    monits = []
     for i in range(rows):
         list_id += [data.id_num(ids)]
         eci_nums += [data.eci_number(eci_ids)]
@@ -53,6 +71,7 @@ def create_table(rows):
         ages += [data.age(births[i])]
         atts += [data.attendant(last_names[i])]
         cell_at += [data.cellphone()]
+        mail_at += [data.personal_mail(atts[i][0], atts[i][-1])]
         degrees += [data.degree(roles[i])]
         strats += [data.stratum()]
         costs += [data.semester_cost(strats[i], roles[i])]
@@ -71,6 +90,23 @@ def create_table(rows):
         fins_e += [data.fin_entity(fins[i])]
         fams += [data.family()]
         eng_lvls += [data.eng_lvl()]
+        type_docs += [data.doc_type()]
+        epss += [data.eps()]
+        total_creds += [data.total_cred(degrees[i], roles[i])]
+        ap_creds += [data.aprove_cred(total_creds[i], p_cred[i])]
+        l_creds += [data.last_cred(total_creds[i], ap_creds[i])]
+        ac_creds += [data.act_credits(roles[i])]
+        armys += [data.army(genders[i])]
+        allys += [data.allergy()]
+        debts += [data.debt(costs[i], roles[i])]
+        portal_ids += [data.portal_id(eci_nums[i], eci_ids)]
+        cancell += [data.cancelled(sems[i], roles[i])]
+        losts += [data.lost(sems[i], roles[i])]
+        exp_years += [data.expected_year(enroles[i], roles[i])]
+        countries += [data.birth_country()]
+        b_cities += [data.birth_city(countries[i])]
+        c_states += [data.civil_state()]
+        monits += [data.monit(roles[i])]
     table["Documento de identidad"] = list_id
     table["# carnet"] = eci_nums
     table["Nombre"] = names
@@ -87,6 +123,7 @@ def create_table(rows):
     table["Edad"] = ages
     table["Acudiente"] = atts
     table["Tel. Acudiente"] = cell_at
+    table["Correo acudiente"] = mail_at
     table["Carrera"] = degrees
     table["Programa academico"] = progs
     table["Plan acaemico"] = pens
@@ -101,7 +138,25 @@ def create_table(rows):
     table["% creditos aprovados"] = p_cred
     table["Financiado"] = fins
     table["Entidad que lo financia"] = fins_e
-    table["Familiares en la Escela"] = fams
+    table["Familiares en la Escuela"] = fams
     table["Nivel de ingles"] = eng_lvls
-    print(table)
+    table["Tipo documento"] = type_docs
+    table["EPS"] = epss
+    table["Total creditos"] = total_creds
+    table["Creditos aprovados"] = ap_creds
+    table["Creditos faltantes"] = l_creds
+    table["Creditos actuales"] = ac_creds
+    table["Libreta militar"] = armys
+    table["Alergias"] = allys
+    table["Deuda"] = debts
+    table["ID Enlace"] = portal_ids
+    table["Materias canceladas"] = cancell
+    table["Materias perdidas"] = losts
+    table["Año esperado de grado"] = exp_years
+    table["Pais de nacimiento"] = countries
+    table["Ciudad Nacimiento"] = b_cities
+    table["Estado civil"] = c_states
+    table["Monitor"] = monits
+    table.to_csv('table.csv')
+    table.to_excel('table.xlsx',  index=False)
 

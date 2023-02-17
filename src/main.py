@@ -1,5 +1,3 @@
-
-
 import generate_data as data
 import table as t
 

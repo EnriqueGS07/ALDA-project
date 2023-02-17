@@ -220,6 +220,7 @@ def financing(role):
     else:
         return random.choices(["Si", "No"], weights=[2, 1])[0]
 
+
 def fin_entity(finan):
     entities = ["ICETEX", "Generacion E", "Pilo paga", "Fondo solidario"]
     return "N/A" if finan == "N/A" or finan == "No" else random.choice(entities)
@@ -230,22 +231,112 @@ def family():
 
 
 def eng_lvl():
-    return random.choices(["A2", "B1", "B2", "C1"], weights=[2, 3, 4, 2])
+    return random.choices(["A2", "B1", "B2", "C1"], weights=[2, 3, 4, 2])[0]
 
 
+def doc_type():
+    return random.choices(["CC", "TI", "PAP"], weights=[5, 2, 1])[0]
 
-#Tipo de documento
-#EPS
-#Creditos totales de la carrera
-#Creditos cursados y faltantesv
-#Creditos semestre actual
-#Libreta militar
-#Alergias
-#Deuda
-#id_Enlace
-#Asiganturas canceladas y perdidas
-#Peridoo que se gradua
-# Pais y ciudad de nacimiento
-# Estado civil
-# Correo acudiente
-# Monitor
+
+def eps():
+    epss = ["Medimas", "Famisanar", "Nueva EPS", "Salud Total", "Sura /Suramericana", "Cruz Blanca", "Aliansalud",
+            "Sanitas", "Compensar", "Coomeva", "Saludvida", "Cafesalud", "Comfandi", "Emssanar", "Comfenalco",
+            "Colsubsidio", "Capital Salud", "Cafam", "SOS"]
+    return random.choice(epss)
+
+
+def total_cred(deg, role):
+    if role != "Estudiante":
+        return "N/A"
+    degrees = ["Ingieneria Sistemas", "Ingieneria Mecanica", "Ingieneria Civil", "Ingieneria Biomedica",
+               "Ingieneria Ambiental", "Ingieneria Industrial", "Ingieneria Estadistica", "Economia",
+               "Administración de Empresas", "Matematicas", "Ingieneria Electronica", "Ingieneria Electrica"]
+    cred = [158, 170, 170, 154, 170, 170, 157, 152, 151, 170, 168, 163]
+    return cred[degrees.index(deg)]
+
+
+def aprove_cred(total, percent):
+    if total == "N/A" or percent == "N/A":
+        return "N/A"
+    else:
+        percent = int(percent.rstrip("%"))
+        return (total/100) * percent
+
+
+def last_cred(total, aprove):
+    return "N/A" if total == "N/A" or aprove == "N/A" else total - aprove
+
+
+def act_credits(role):
+    if role != "Estudiante":
+        return "N/A"
+    else:
+        return random.randint(10, 20)
+
+
+def army(gen):
+    return "N/A" if gen == "M" else random.choice(["Si", "No"])
+
+
+def allergy():
+    choices = ["Anticonvulsivos", "Insulina", "Yodo", "Penicilina", "Antibióticos conexos", "Sulfamidas",
+               "Opioides", "Ninguna"]
+    return random.choices(choices, weights=[1, 1, 1, 1, 1, 1, 1, 6])[0]
+
+
+def debt(cost, role):
+    if role != "Estudiante":
+        return "N/A"
+    choices = [cost + cost/2, cost/2, cost, 0]
+    return random.choices(choices, weights=[1, 2, 2, 6])[0]
+
+
+def portal_id(eci_num, set_ids):
+    if str(eci_num)[0] == "1":
+        return eci_num
+    else:
+        value = int("216" + str(random.randint(1111, 9999)))
+        while value in set_ids:
+            value = int("216" + str(random.randint(1111, 9999)))
+        set_ids.add(value)
+        return value
+
+
+def cancelled(sem, role):
+    if role != "Estudiante":
+        return "N/A"
+    poss_lost = [0, 1, 2, 3, 4]
+    return 0 if sem == "1" else random.choices(poss_lost, weights=[1, 4, 2, 1, 1])[0]
+
+
+def lost(sem, role):
+    if role != "Estudiante":
+        return "N/A"
+    poss_lost = [0, 1, 2, 3, 4]
+    return 0 if sem == "2" or "1" else random.choices(poss_lost, weights=[1, 2, 2, 1, 1])[0]
+
+
+def expected_year(in_year, role):
+    return in_year + 5 if role == "Estudiante" else "N/A"
+
+
+def birth_country():
+    countries = ["España", "Colombia", "Argentina", "Venezuela", "Ecuador", "Peru", "Mexico"]
+    return random.choices(countries, weights=[1, 10, 1, 2, 2, 2, 1])[0]
+
+
+def birth_city(country):
+    if country != "Colombia":
+        return "N/A"
+    cities = ["Bogotá", "Medellin", "Barranquilla", "Santa Marta", "Cartagena", "Villavicencio", "Chipaque",
+              "Bucaramanga", "Valledupar", "Cucuta"]
+    return random.choices(cities, weights=[10, 1, 1, 1, 1, 1, 1, 1, 1, 1])[0]
+
+
+def civil_state():
+    return random.choices(["Casado", "Soltero"], weights=[1, 3])[0]
+
+
+def monit(role):
+    return random.choices(["Si", "No"], weights=[1, 3])[0] if role == "Estudiante" else "N/A"
+
