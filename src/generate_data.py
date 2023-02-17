@@ -3,8 +3,12 @@ import string
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-
 def id_num(set_ids):
+    """
+    Generate a new id
+    :param set_ids: Set of existent ids
+    :return: Created id
+    """
     value = random.randint(70000000, 1199999999)
     while value in set_ids:
         value = random.randint(70000000, 1199999999)
@@ -13,6 +17,11 @@ def id_num(set_ids):
 
 
 def eci_number(set_ids):
+    """
+    Generate new university id number
+    :param set_ids: Set of existent ids
+    :return: University id number
+    """
     year = random.randint(2018, 2023)
     if year <= 2019:
         value = int("216" + str(random.randint(1111, 9999)))
@@ -29,11 +38,20 @@ def eci_number(set_ids):
 
 
 def living_city():
+    """
+    Generate a random city where the person actually lives
+    :return: City
+    """
     locations = ["Bogotá", "Cajica", "Chia", "Sopo", "Zipaquira", "Soacha", "La Calera"]
     return random.choices(locations, weights=[8, 1, 2, 1, 1, 1, 1])[0]
 
 
-def adress(city):
+def address(city):
+    """
+    Generate a random address
+    :param city: City where the address has to be created
+    :return: Address
+    """
     cll_num = random.randint(1, 246) if city == "Bogotá" else random.randint(1, 20)
     cr_num = random.randint(1, 160) if city == "Bogotá" else random.randint(1, 20)
     specs = ["cll ", "cra ", "trans ", "dg "]
@@ -58,11 +76,20 @@ def adress(city):
 
 
 def gender():
+    """
+    Generate a gender
+    :return: Gender
+    """
     genders = ["H", "M"]
     return random.choice(genders)
 
 
 def name(gen):
+    """
+    Generate a new name
+    :param gen: Gender of the person
+    :return: Name
+    """
     file = open("../male_names.txt", encoding="utf8") if gen == "H" else open("../female_names.txt", encoding="utf8")
     lis = file.read().split()
     file.close()
@@ -70,6 +97,10 @@ def name(gen):
 
 
 def last_name():
+    """
+    Generate new last names
+    :return: Last names
+    """
     file = open("../last_names.txt", encoding="utf8")
     lis = file.read().split()
     file.close()
@@ -77,6 +108,12 @@ def last_name():
 
 
 def personal_mail(user_n, lastname):
+    """
+    Generate a personal email
+    :param user_n: Name of the user
+    :param lastname: Last name of the user
+    :return: Email
+    """
     lastname = lastname.split(" ")[0]
     user1 = user_n + lastname + str(random.randint(1, 999))
     user2 = user_n + "." + lastname + random.choice(string.ascii_letters)
@@ -87,9 +124,14 @@ def personal_mail(user_n, lastname):
     return random.choice(users) + random.choice(doms)
 
 
-def rol(cc):
+def rol(age):
+    """
+    Generate the role that the user performs in the university
+    :param cc:
+    :return:
+    """
     rols = ["Admin", "Profesor"]
-    return "Estudiante" if cc > 100000000 else random.choice(rols)
+    return "Estudiante" if age < 25 else random.choice(rols)
 
 
 def eci_mail(user_n, lastname, role):

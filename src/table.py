@@ -44,13 +44,13 @@ def create_table(rows):
         genders += [data.gender()]
         names += [data.name(genders[i])]
         last_names += [data.last_name()]
+        births += [data.birth(list_id[i])]
+        ages += [data.age(births[i])]
         p_mails += [data.personal_mail(names[i], last_names[i])]
-        roles += [data.rol(list_id[i])]
+        roles += [data.rol(ages[i])]
         a_mails += [data.eci_mail(names[i], last_names[i], roles[i])]
         cells += [data.cellphone()]
         bloods += [data.blood()]
-        births += [data.birth(list_id[i])]
-        ages += [data.age(births[i])]
         atts += [data.attendant(last_names[i])]
         cell_at += [data.cellphone()]
         degrees += [data.degree(roles[i])]
@@ -64,7 +64,7 @@ def create_table(rows):
         plans += [data.program_state(roles[i])]
         pens += [data.academic_plan(progs[i])]
         ctys += [data.living_city()]
-        adds += [data.adress(ctys[0])]
+        adds += [data.address(ctys[0])]
         sems += [data.semester(roles[i], states[i])]
         p_cred += [data.credits_percent(sems[i])]
         fins += [data.financing(roles[i])]
@@ -76,6 +76,7 @@ def create_table(rows):
     table["Nombre"] = names
     table["Apellidos"] = last_names
     table["Genero"] = genders
+    table["Edad"] = ages
     table["Correo personal"] = p_mails
     table["Cargo"] = roles
     table["Correo Ins"] = a_mails
@@ -84,7 +85,6 @@ def create_table(rows):
     table["Direccion residencia"] = adds
     table["Tipo de sangre"] = bloods
     table["Fecha nacimiento"] = births
-    table["Edad"] = ages
     table["Acudiente"] = atts
     table["Tel. Acudiente"] = cell_at
     table["Carrera"] = degrees
