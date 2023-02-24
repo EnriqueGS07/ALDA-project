@@ -3,6 +3,7 @@ import string
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
+# Complejidad: O(n)
 def id_num(set_ids):
     """
     Generate a new id
@@ -16,6 +17,7 @@ def id_num(set_ids):
     return value
 
 
+# Complejidad: O(n)
 def eci_number(set_ids):
     """
     Generate new university id number
@@ -37,6 +39,7 @@ def eci_number(set_ids):
         return value
 
 
+# Complejidad: O(1)
 def living_city():
     """
     Choose a random city where the person actually lives
@@ -46,6 +49,7 @@ def living_city():
     return random.choices(locations, weights=[8, 1, 2, 1, 1, 1, 1])[0]
 
 
+# Complejidad: O(1)
 def address(city):
     """
     Generate a random address
@@ -75,6 +79,7 @@ def address(city):
     return spec + first + " #" + sec + "-" + thr
 
 
+# Complejidad: O(1)
 def gender():
     """
     Choose a gender
@@ -84,6 +89,7 @@ def gender():
     return random.choice(genders)
 
 
+# Complejidad: O(1)
 def name(gen):
     """
     Generate a new name
@@ -96,6 +102,7 @@ def name(gen):
     return random.choice(lis)
 
 
+# Complejidad: O(1)
 def last_name():
     """
     Generate new last names
@@ -107,6 +114,7 @@ def last_name():
     return random.choice(lis) + " " + random.choice(lis)
 
 
+# Complejidad: O(1)
 def personal_mail(user_n, lastname):
     """
     Generate a personal email
@@ -124,6 +132,7 @@ def personal_mail(user_n, lastname):
     return random.choice(users) + random.choice(doms)
 
 
+# Complejidad: O(1)
 def rol(age):
     """
     Choose the role that the user performs in the university
@@ -134,6 +143,7 @@ def rol(age):
     return "Estudiante" if age < 25 else random.choice(rols)
 
 
+# Complejidad: O(1)
 def eci_mail(user_n, lastname, role):
     """
     Generate the university email for the user
@@ -146,6 +156,7 @@ def eci_mail(user_n, lastname, role):
     return user + "@mail.escuelaing.edu.co" if role == "Estudiante" else user + "@escuelaing.edu.co"
 
 
+# Complejidad: O(1)
 def cellphone():
     """
     Generate a cellphone number
@@ -155,6 +166,7 @@ def cellphone():
     return int("3" + random.choice(start) + str(random.randint(1111111, 9999999)))
 
 
+# Complejidad: O(1)
 def blood_type():
     """
     Generate a blood type
@@ -165,6 +177,7 @@ def blood_type():
     return random.choice(typ) + random.choice(rh)
 
 
+# Complejidad: O(1)
 def attendant(l_name):
     """
     Generate the user's attendant
@@ -176,6 +189,7 @@ def attendant(l_name):
     return name(gen) + " " + last_n[0] if gen == "H" else name(gen) + " " + last_n[1]
 
 
+# Complejidad: O(1)
 def birth(cc):
     """
     Generate the birth date of the user
@@ -187,6 +201,7 @@ def birth(cc):
     return (start + (fin - start) * random.random()).date()
 
 
+# Complejidad: O(1)
 def age(birth_date):
     """
     Calculate the age of the user
@@ -196,6 +211,7 @@ def age(birth_date):
     return relativedelta(datetime.now(), birth_date).years
 
 
+# Complejidad: O(1)
 def stratum():
     """
     Generate a new stratum
@@ -204,6 +220,7 @@ def stratum():
     return random.choices([1, 2, 3, 4, 5, 6], weights=[1, 1, 3, 4, 4, 3])[0]
 
 
+# Complejidad: O(1)
 def semester_cost(strat, role):
     """
     Generate a cost for the semester
@@ -219,6 +236,7 @@ def semester_cost(strat, role):
         return random.randint(5900000, 12500000)
 
 
+# Complejidad: O(1)
 def degree(role):
     """
     Choose a degree for the user
@@ -234,6 +252,7 @@ def degree(role):
         return random.choice(degrees)
 
 
+# Complejidad: O(1)
 def total_average(role):
     """
     Generate a GPA
@@ -247,6 +266,7 @@ def total_average(role):
         return note if note <= 5.0 else 4.8
 
 
+# Complejidad: O(1)
 def partial_average(role, avg):
     """
     Generate the average of the actual semester
@@ -261,8 +281,7 @@ def partial_average(role, avg):
         return note if note <= 5.0 else 4.8
 
 
-#Corregir fevha de nacimiento con año de inicio
-#Verificar que el semestre y esto concuerdan
+# Complejidad: O(1)
 def start_year(role):
     """
     Start year of the user
