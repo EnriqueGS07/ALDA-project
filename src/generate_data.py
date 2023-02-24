@@ -3,11 +3,7 @@ import string
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-<<<<<<< HEAD
 # Complejidad: O(n)
-=======
-
->>>>>>> be3f77618531e12d5dd3db4597d7fc3f114253fe
 def id_num(set_ids):
     """
     Generate a new id
@@ -339,11 +335,7 @@ def partial_average(role, avg):
         return note if note <= 5.0 else 4.8
 
 
-<<<<<<< HEAD
 # Complejidad: O(1)
-=======
-
->>>>>>> be3f77618531e12d5dd3db4597d7fc3f114253fe
 def start_year(role):
     """
     Start year of the user
@@ -357,6 +349,7 @@ def start_year(role):
     )
 
 
+# Complejidad: O(1)
 def degree_state(role):
     """
     Generate a degree state for the user
@@ -370,6 +363,7 @@ def degree_state(role):
         return random.choices(degrees, weights=[8, 2, 2, 1])[0]
 
 
+# Complejidad: O(1)
 def semester(role, state):
     """
     Calculate the user's semester
@@ -385,6 +379,7 @@ def semester(role, state):
         )[0]
 
 
+# Complejidad: O(1)
 def academic_program(deg):
     """
     Generate an academic program
@@ -400,6 +395,7 @@ def academic_program(deg):
     else:
         return deg[0:4].upper()
 
+# Complejidad: O(1)
 
 def academic_plan(prgrm):
     """
@@ -412,6 +408,7 @@ def academic_plan(prgrm):
     return prgrm + str(random.randint(347, 360))
 
 
+# Complejidad: O(1)
 def program_state(role):
     """
     Generate a program state
@@ -424,6 +421,7 @@ def program_state(role):
         return random.choices(["PLNC", "MATR", "ACTV"])[0]
 
 
+# Complejidad: O(1)
 # Verificar con la cantidad de creditos pasados
 def credits_percent(sem):
     """
@@ -437,6 +435,7 @@ def credits_percent(sem):
         return str(sem * 10 + random.randint(-10, 10)) + "%"
 
 
+# Complejidad: O(1)
 def financing(role):
     """
     Generate the user's career financing mode
@@ -449,6 +448,7 @@ def financing(role):
         return random.choices(["Si", "No"], weights=[2, 1])[0]
 
 
+# Complejidad: O(1)
 def fin_entity(finan):
     """
     Generate the finance entity
@@ -459,6 +459,7 @@ def fin_entity(finan):
     return "N/A" if finan == "N/A" or finan == "No" else random.choice(entities)
 
 
+# Complejidad: O(1)
 def family():
     """
     Randomly generate if theres family of the user in the university
@@ -467,6 +468,7 @@ def family():
     return random.choice(["SI", "NO"])
 
 
+# Complejidad: O(1)
 def eng_lvl():
     """
     Generate the english level
@@ -475,6 +477,7 @@ def eng_lvl():
     return random.choices(["A2", "B1", "B2", "C1"], weights=[2, 3, 4, 2])[0]
 
 
+# Complejidad: O(1)
 def doc_type():
     """
     Generate the type of the identity document
@@ -483,6 +486,7 @@ def doc_type():
     return random.choices(["CC", "TI", "PAP"], weights=[5, 2, 1])[0]
 
 
+# Complejidad: O(1)
 def eps():
     """
     Choose an EPS for the user
@@ -512,6 +516,7 @@ def eps():
     return random.choice(epss)
 
 
+# Complejidad: O(1)
 def total_cred(deg, role):
     """
     Get the total credits of the degree that the user is studying
@@ -539,6 +544,7 @@ def total_cred(deg, role):
     return cred[degrees.index(deg)]
 
 
+# Complejidad: O(1)
 def aprove_cred(total, percent):
     """
     Calculate user's approved credits
@@ -553,6 +559,7 @@ def aprove_cred(total, percent):
         return (total / 100) * percent
 
 
+# Complejidad: O(1)
 def last_cred(total, aprove):
     """
     Calculate user's missing credits
@@ -563,6 +570,7 @@ def last_cred(total, aprove):
     return "N/A" if total == "N/A" or aprove == "N/A" else total - aprove
 
 
+# Complejidad: O(1)
 def act_credits(role):
     """
     Generate the credits that the user is taking
@@ -575,6 +583,7 @@ def act_credits(role):
         return random.randint(10, 20)
 
 
+# Complejidad: O(1)
 def army(gen):
     """
     Choose if the user has a military card
@@ -584,6 +593,7 @@ def army(gen):
     return "N/A" if gen == "M" else random.choice(["Si", "No"])
 
 
+# Complejidad: O(1)
 def allergy():
     """
     Choose if the user have allergies and which one it has
@@ -602,6 +612,7 @@ def allergy():
     return random.choices(choices, weights=[1, 1, 1, 1, 1, 1, 1, 6])[0]
 
 
+# Complejidad: O(1)
 def debt(cost, role):
     """
     User's debt amount
@@ -615,6 +626,7 @@ def debt(cost, role):
     return random.choices(choices, weights=[1, 2, 2, 6])[0]
 
 
+# Complejidad: O(n)
 def portal_id(eci_num, set_ids):
     """
     User's id on university's website
@@ -632,6 +644,7 @@ def portal_id(eci_num, set_ids):
         return value
 
 
+# Complejidad: O(1)
 def cancelled(sem, role):
     """
     Generate a number of cancelled subjects
@@ -645,6 +658,7 @@ def cancelled(sem, role):
     return 0 if sem == "1" else random.choices(poss_lost, weights=[1, 4, 2, 1, 1])[0]
 
 
+# Complejidad: O(1)
 def failed(sem, role):
     """
     Choose a number of failed subjects
@@ -662,6 +676,7 @@ def failed(sem, role):
     )
 
 
+# Complejidad: O(1)
 def expected_year(in_year, role):
     """
     Calculate the expected year of user's career ending
@@ -672,6 +687,7 @@ def expected_year(in_year, role):
     return in_year + 5 if role == "Estudiante" else "N/A"
 
 
+# Complejidad: O(1)
 def birth_country():
     """
     Choose the user's birth country
@@ -689,6 +705,7 @@ def birth_country():
     return random.choices(countries, weights=[1, 10, 1, 2, 2, 2, 1])[0]
 
 
+# Complejidad: O(1)
 def birth_city(country):
     """
     Choose birth city
@@ -712,6 +729,7 @@ def birth_city(country):
     return random.choices(cities, weights=[10, 1, 1, 1, 1, 1, 1, 1, 1, 1])[0]
 
 
+# Complejidad: O(1)
 def civil_state():
     """
     Choose a user's civil state
@@ -720,6 +738,7 @@ def civil_state():
     return random.choices(["Casado", "Soltero"], weights=[1, 3])[0]
 
 
+# Complejidad: O(1)
 def monit(role):
     """
     Choose if the user has made tutorship
