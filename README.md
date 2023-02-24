@@ -1,7 +1,5 @@
 # ALDA project
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-![coverage](https://user-images.githubusercontent.com/98104282/221192233-d60e01b8-29ff-495f-b7cf-cd99679fb4d4.svg)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) ![coverage](https://user-images.githubusercontent.com/98104282/221192233-d60e01b8-29ff-495f-b7cf-cd99679fb4d4.svg)
 
 
 $ coverage report
