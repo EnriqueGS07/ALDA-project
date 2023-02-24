@@ -5,10 +5,10 @@
 
 
 $ coverage report
-Name                         Stmts   Miss  Cover
-------------------------------------------------
-src\__init__.py                  0      0   100%
-src\generate_data.py           218     32    85%
-test\__init__.py                 0      0   100%
-test\test_generate_data.py     176      5    97%
+| Name                       | Stmts | Miss | Cover |
+|----------------------------|-------|------|-------|
+| src\__init__.py            | 0     | 0    | 100%  |
+| src\generate_data.py       | 218   | 32   | 85%   |
+| test\__init__.py           | 0     | 0    | 100%  |
+| test\test_generate_data.py | 176   | 5    | 97%   |
 
