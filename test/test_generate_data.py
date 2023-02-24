@@ -5,7 +5,6 @@ import src.generate_data as data
 
 
 class GenerateTest(unittest.TestCase):
-
     def test_id(self):
         ids = set()
         id_num = str(data.id_num(ids))
@@ -23,12 +22,24 @@ class GenerateTest(unittest.TestCase):
 
     def test_living_city(self):
         city = data.living_city()
-        locations = ["Bogotá", "Cajica", "Chia", "Sopo", "Zipaquira", "Soacha", "La Calera"]
+        locations = [
+            "Bogotá",
+            "Cajica",
+            "Chia",
+            "Sopo",
+            "Zipaquira",
+            "Soacha",
+            "La Calera",
+        ]
         self.assertTrue(city in locations)
 
     def test_address(self):
         add = data.address("Bogotá")
-        self.assertTrue("#" in add and "-" in add and ("cll" in add or "cra" in add or "trans" in add or "dg" in add))
+        self.assertTrue(
+            "#" in add
+            and "-" in add
+            and ("cll" in add or "cra" in add or "trans" in add or "dg" in add)
+        )
 
     def test_gender(self):
         gen = data.gender()
@@ -36,8 +47,16 @@ class GenerateTest(unittest.TestCase):
 
     def test_perso_mail(self):
         mail = data.personal_mail("hgfsad", "suadoi")
-        self.assertTrue(".com" in mail and "@" in mail and ("gmail" in mail or "hotmail" in mail or "outlook" in mail
-                                                            or "yahoo" in mail))
+        self.assertTrue(
+            ".com" in mail
+            and "@" in mail
+            and (
+                "gmail" in mail
+                or "hotmail" in mail
+                or "outlook" in mail
+                or "yahoo" in mail
+            )
+        )
 
     def test_cc(self):
         ids = set()
@@ -68,7 +87,7 @@ class GenerateTest(unittest.TestCase):
         ids = set()
         cc = data.id_num(ids)
         date = data.birth(cc)
-        self.assertTrue(16 <= data.age(date) < 80 )
+        self.assertTrue(16 <= data.age(date) < 80)
 
     def test_strat(self):
         strat = data.stratum()
@@ -98,7 +117,10 @@ class GenerateTest(unittest.TestCase):
 
     def test_degre_state(self):
         results = ["N/A", "Pregrado", "Especialización", "Maestria", "Doctorado"]
-        self.assertTrue(data.degree_state("Estudiante") in results and data.degree_state("Profesor") in results)
+        self.assertTrue(
+            data.degree_state("Estudiante") in results
+            and data.degree_state("Profesor") in results
+        )
 
     def test_semester(self):
         results = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -108,7 +130,20 @@ class GenerateTest(unittest.TestCase):
         self.assertTrue(data.semester("E", "Pregrado") == "N/A")
 
     def test_program(self):
-        results = ["ISIS", "IMEC", "IBIO", "IAMB", "IELC", "IELE", "ICIV", "IIND", "IEST", "ADMI", "MATE", "ECON"]
+        results = [
+            "ISIS",
+            "IMEC",
+            "IBIO",
+            "IAMB",
+            "IELC",
+            "IELE",
+            "ICIV",
+            "IIND",
+            "IEST",
+            "ADMI",
+            "MATE",
+            "ECON",
+        ]
         deg = data.degree("Estudiante")
         aca = data.academic_program(deg)
         self.assertTrue(aca in results)
@@ -134,11 +169,11 @@ class GenerateTest(unittest.TestCase):
 
     def test_credit_percent2(self):
         self.assertTrue(data.credits_percent("N/A") == "N/A")
+
     def test_finan(self):
         ids = set()
         fin = data.financing(data.rol(data.age(data.birth(data.id_num(ids)))))
         self.assertTrue(fin == "N/A" or fin == "Si" or fin == "No")
-
 
     def test_fin_ent(self):
         entities = ["ICETEX", "Generacion E", "Pilo paga", "Fondo solidario", "N/A"]
@@ -151,7 +186,6 @@ class GenerateTest(unittest.TestCase):
         print(dat)
         self.assertTrue(dat == "SI" or dat == "NO")
 
-
     def test_eng(self):
         self.assertTrue(data.eng_lvl() in ["A2", "B1", "B2", "C1"])
 
@@ -159,9 +193,30 @@ class GenerateTest(unittest.TestCase):
         self.assertTrue(data.doc_type() in ["CC", "TI", "PAP"])
 
     def test_eps(self):
-        self.assertTrue(data.eps() in ["Medimas", "Famisanar", "Nueva EPS", "Salud Total", "Sura /Suramericana", "Cruz Blanca", "Aliansalud",
-            "Sanitas", "Compensar", "Coomeva", "Saludvida", "Cafesalud", "Comfandi", "Emssanar", "Comfenalco",
-            "Colsubsidio", "Capital Salud", "Cafam", "SOS"])
+        self.assertTrue(
+            data.eps()
+            in [
+                "Medimas",
+                "Famisanar",
+                "Nueva EPS",
+                "Salud Total",
+                "Sura /Suramericana",
+                "Cruz Blanca",
+                "Aliansalud",
+                "Sanitas",
+                "Compensar",
+                "Coomeva",
+                "Saludvida",
+                "Cafesalud",
+                "Comfandi",
+                "Emssanar",
+                "Comfenalco",
+                "Colsubsidio",
+                "Capital Salud",
+                "Cafam",
+                "SOS",
+            ]
+        )
 
     def test_total_cred(self):
         ids = set()
@@ -170,13 +225,16 @@ class GenerateTest(unittest.TestCase):
         if deg == "N/A":
             self.assertTrue(data.total_cred(deg, rol) == "N/A")
         else:
-            cred = data.total_cred(deg,rol)
-            self.assertTrue(cred in [158, 170, 170, 154, 170, 170, 157, 152, 151, 170, 168, 163])
-
+            cred = data.total_cred(deg, rol)
+            self.assertTrue(
+                cred in [158, 170, 170, 154, 170, 170, 157, 152, 151, 170, 168, 163]
+            )
 
     def test_ap_cred(self):
         per = random.randint(0, 100)
-        cred = data.aprove_cred(data.total_cred(data.degree("Estudiante"), "Estudiante"), str(per) + "%")
+        cred = data.aprove_cred(
+            data.total_cred(data.degree("Estudiante"), "Estudiante"), str(per) + "%"
+        )
         self.assertTrue(cred <= 170)
 
     def tets_act_cred(self):
@@ -186,34 +244,72 @@ class GenerateTest(unittest.TestCase):
         self.assertTrue(data.army(data.gender()) in ["Si", "No", "N/A"])
 
     def test_aller(self):
-        self.assertTrue(data.allergy() in ["Anticonvulsivos", "Insulina", "Yodo", "Penicilina", "Antibióticos conexos", "Sulfamidas",
-               "Opioides", "Ninguna"])
+        self.assertTrue(
+            data.allergy()
+            in [
+                "Anticonvulsivos",
+                "Insulina",
+                "Yodo",
+                "Penicilina",
+                "Antibióticos conexos",
+                "Sulfamidas",
+                "Opioides",
+                "Ninguna",
+            ]
+        )
 
     def test_debt(self):
         debt = data.debt(data.semester_cost(data.stratum(), "Estudiante"), "Estudiante")
-        self.assertTrue( 0 <= debt <= 12500000 + 12500000/2)
+        self.assertTrue(0 <= debt <= 12500000 + 12500000 / 2)
 
     def test_portal_id(self):
         num = data.portal_id(data.id_num(set()), set())
         self.assertTrue(isinstance(num, int))
 
     def test_cancelled(self):
-        self.assertTrue(data.cancelled(data.semester("Estudiante", "Pregrado"), "Estudiante") in range(5))
+        self.assertTrue(
+            data.cancelled(data.semester("Estudiante", "Pregrado"), "Estudiante")
+            in range(5)
+        )
 
     def test_failed(self):
-        sem = random.randint(1,10)
+        sem = random.randint(1, 10)
         self.assertTrue(data.failed(10, "Estudiante") in range(5))
-
 
     def test_exp_year(self):
         self.assertTrue(data.expected_year(data.start_year("Estudiante"), "Estudiante"))
 
     def test_country(self):
-        self.assertTrue(data.birth_country() in ["España", "Colombia", "Argentina", "Venezuela", "Ecuador", "Peru", "Mexico"])
+        self.assertTrue(
+            data.birth_country()
+            in [
+                "España",
+                "Colombia",
+                "Argentina",
+                "Venezuela",
+                "Ecuador",
+                "Peru",
+                "Mexico",
+            ]
+        )
 
     def test_city(self):
-        self.assertTrue(data.birth_city(data.birth_country()) in ["Bogotá", "Medellin", "Barranquilla", "Santa Marta", "Cartagena", "Villavicencio", "Chipaque",
-              "Bucaramanga", "Valledupar", "Cucuta", "N/A"])
+        self.assertTrue(
+            data.birth_city(data.birth_country())
+            in [
+                "Bogotá",
+                "Medellin",
+                "Barranquilla",
+                "Santa Marta",
+                "Cartagena",
+                "Villavicencio",
+                "Chipaque",
+                "Bucaramanga",
+                "Valledupar",
+                "Cucuta",
+                "N/A",
+            ]
+        )
 
     def test_civi_state(self):
         self.assertTrue(data.civil_state() in ["Casado", "Soltero"])
@@ -221,22 +317,16 @@ class GenerateTest(unittest.TestCase):
     def test_monit(self):
         self.assertTrue(data.monit("Estudiante") in ["Si", "No"])
 
-    # def test_name(self):
-    #     self.assertTrue(isinstance(data.name(data.gender()), str))
-    #
-    # def test_last_name(self):
-    #     self.assertTrue(isinstance(data.last_name(), str))
-
-    # def
-
     def test_academic_plan(self):
         self.assertTrue(data.academic_plan("N/A") == "N/A")
 
     def test_academic_plan2(self):
-        self.assertTrue(data.academic_plan(data.academic_program(data.degree("Estudiante"))))
+        self.assertTrue(
+            data.academic_plan(data.academic_program(data.degree("Estudiante")))
+        )
 
     def test_act_cred(self):
-        self.assertTrue(data.act_credits("Estudiante") in range(10,21))
+        self.assertTrue(data.act_credits("Estudiante") in range(10, 21))
 
     def test_act_cred2(self):
         self.assertTrue(data.act_credits("asasfsdf") == "N/A")
@@ -244,7 +334,6 @@ class GenerateTest(unittest.TestCase):
     def test_degree2(self):
         self.assertTrue(data.degree("Profesor") == "N/A")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
-
-

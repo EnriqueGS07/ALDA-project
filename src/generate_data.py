@@ -3,7 +3,11 @@ import string
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
+<<<<<<< HEAD
 # Complejidad: O(n)
+=======
+
+>>>>>>> be3f77618531e12d5dd3db4597d7fc3f114253fe
 def id_num(set_ids):
     """
     Generate a new id
@@ -59,8 +63,24 @@ def address(city):
     cll_num = random.randint(1, 246) if city == "Bogotá" else random.randint(1, 20)
     cr_num = random.randint(1, 160) if city == "Bogotá" else random.randint(1, 20)
     specs = ["cll ", "cra ", "trans ", "dg "]
-    s_lett = [" ", "a", "b", "c", "d", "e", "f", "g", "Bis", "a Bis", "b Bis", "c Bis", "d Bis", "e Bis", "f Bis",
-              "g Bis"]
+    s_lett = [
+        " ",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "Bis",
+        "a Bis",
+        "b Bis",
+        "c Bis",
+        "d Bis",
+        "e Bis",
+        "f Bis",
+        "g Bis",
+    ]
     lett = [" ", "a", "b", "c", "Bis", "a Bis", "b Bis"]
     spec = random.choice(specs)
     if spec == "cll" or spec == "dg":
@@ -96,7 +116,11 @@ def name(gen):
     :param gen: Gender of the person
     :return: Name
     """
-    file = open("../male_names.txt", encoding="utf8") if gen == "H" else open("../female_names.txt", encoding="utf8")
+    file = (
+        open("../male_names.txt", encoding="utf8")
+        if gen == "H"
+        else open("../female_names.txt", encoding="utf8")
+    )
     lis = file.read().split()
     file.close()
     return random.choice(lis)
@@ -153,7 +177,11 @@ def eci_mail(user_n, lastname, role):
     :return: University email
     """
     user = user_n + "." + lastname.split(" ")[0]
-    return user + "@mail.escuelaing.edu.co" if role == "Estudiante" else user + "@escuelaing.edu.co"
+    return (
+        user + "@mail.escuelaing.edu.co"
+        if role == "Estudiante"
+        else user + "@escuelaing.edu.co"
+    )
 
 
 # Complejidad: O(1)
@@ -162,7 +190,26 @@ def cellphone():
     Generate a cellphone number
     :return: Cellphone number
     """
-    start = ["14", "15", "20", "12", "11", "21", "01", "10", "00", "16", "17", "18", "19", "50", "05", "13", "22", "51"]
+    start = [
+        "14",
+        "15",
+        "20",
+        "12",
+        "11",
+        "21",
+        "01",
+        "10",
+        "00",
+        "16",
+        "17",
+        "18",
+        "19",
+        "50",
+        "05",
+        "13",
+        "22",
+        "51",
+    ]
     return int("3" + random.choice(start) + str(random.randint(1111111, 9999999)))
 
 
@@ -243,9 +290,20 @@ def degree(role):
     :param role: Role of the user
     :return: Degree
     """
-    degrees = ["Ingieneria Sistemas", "Ingieneria Mecanica", "Ingieneria Civil", "Ingieneria Biomedica",
-               "Ingieneria Ambiental", "Ingieneria Industrial", "Ingieneria Estadistica", "Economia",
-               "Administración de Empresas", "Matematicas", "Ingieneria Electronica", "Ingieneria Electrica"]
+    degrees = [
+        "Ingieneria Sistemas",
+        "Ingieneria Mecanica",
+        "Ingieneria Civil",
+        "Ingieneria Biomedica",
+        "Ingieneria Ambiental",
+        "Ingieneria Industrial",
+        "Ingieneria Estadistica",
+        "Economia",
+        "Administración de Empresas",
+        "Matematicas",
+        "Ingieneria Electronica",
+        "Ingieneria Electrica",
+    ]
     if role != "Estudiante":
         return "N/A"
     else:
@@ -281,14 +339,22 @@ def partial_average(role, avg):
         return note if note <= 5.0 else 4.8
 
 
+<<<<<<< HEAD
 # Complejidad: O(1)
+=======
+
+>>>>>>> be3f77618531e12d5dd3db4597d7fc3f114253fe
 def start_year(role):
     """
     Start year of the user
     :param role: User's role
     :return: Start year
     """
-    return random.randint(1980, 2023) if role != "Estudiante" else random.randint(2018, 2023)
+    return (
+        random.randint(1980, 2023)
+        if role != "Estudiante"
+        else random.randint(2018, 2023)
+    )
 
 
 def degree_state(role):
@@ -314,7 +380,9 @@ def semester(role, state):
     if role != "Estudiante" or state != "Pregrado":
         return "N/A"
     else:
-        return random.choices([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], weights=[3, 3, 3, 2, 2, 1, 1, 1, 1, 1])[0]
+        return random.choices(
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], weights=[3, 3, 3, 2, 2, 1, 1, 1, 1, 1]
+        )[0]
 
 
 def academic_program(deg):
@@ -328,7 +396,7 @@ def academic_program(deg):
     elif deg == "Ingieneria Electronica":
         return "IELC"
     elif deg.split()[0] == "Ingieneria":
-        return ("I"+deg.split()[1][0:3]).upper()
+        return ("I" + deg.split()[1][0:3]).upper()
     else:
         return deg[0:4].upper()
 
@@ -356,7 +424,7 @@ def program_state(role):
         return random.choices(["PLNC", "MATR", "ACTV"])[0]
 
 
-#Verificar con la cantidad de creditos pasados
+# Verificar con la cantidad de creditos pasados
 def credits_percent(sem):
     """
     Calculate de completed credits percent
@@ -366,7 +434,7 @@ def credits_percent(sem):
     if sem == "N/A":
         return "N/A"
     else:
-        return str(sem*10 + random.randint(-10, 10)) + "%"
+        return str(sem * 10 + random.randint(-10, 10)) + "%"
 
 
 def financing(role):
@@ -420,9 +488,27 @@ def eps():
     Choose an EPS for the user
     :return: EPS
     """
-    epss = ["Medimas", "Famisanar", "Nueva EPS", "Salud Total", "Sura /Suramericana", "Cruz Blanca", "Aliansalud",
-            "Sanitas", "Compensar", "Coomeva", "Saludvida", "Cafesalud", "Comfandi", "Emssanar", "Comfenalco",
-            "Colsubsidio", "Capital Salud", "Cafam", "SOS"]
+    epss = [
+        "Medimas",
+        "Famisanar",
+        "Nueva EPS",
+        "Salud Total",
+        "Sura /Suramericana",
+        "Cruz Blanca",
+        "Aliansalud",
+        "Sanitas",
+        "Compensar",
+        "Coomeva",
+        "Saludvida",
+        "Cafesalud",
+        "Comfandi",
+        "Emssanar",
+        "Comfenalco",
+        "Colsubsidio",
+        "Capital Salud",
+        "Cafam",
+        "SOS",
+    ]
     return random.choice(epss)
 
 
@@ -435,9 +521,20 @@ def total_cred(deg, role):
     """
     if role != "Estudiante":
         return "N/A"
-    degrees = ["Ingieneria Sistemas", "Ingieneria Mecanica", "Ingieneria Civil", "Ingieneria Biomedica",
-               "Ingieneria Ambiental", "Ingieneria Industrial", "Ingieneria Estadistica", "Economia",
-               "Administración de Empresas", "Matematicas", "Ingieneria Electronica", "Ingieneria Electrica"]
+    degrees = [
+        "Ingieneria Sistemas",
+        "Ingieneria Mecanica",
+        "Ingieneria Civil",
+        "Ingieneria Biomedica",
+        "Ingieneria Ambiental",
+        "Ingieneria Industrial",
+        "Ingieneria Estadistica",
+        "Economia",
+        "Administración de Empresas",
+        "Matematicas",
+        "Ingieneria Electronica",
+        "Ingieneria Electrica",
+    ]
     cred = [158, 170, 170, 154, 170, 170, 157, 152, 151, 170, 168, 163]
     return cred[degrees.index(deg)]
 
@@ -453,7 +550,7 @@ def aprove_cred(total, percent):
         return "N/A"
     else:
         percent = int(percent.rstrip("%"))
-        return (total/100) * percent
+        return (total / 100) * percent
 
 
 def last_cred(total, aprove):
@@ -492,8 +589,16 @@ def allergy():
     Choose if the user have allergies and which one it has
     :return: Allergy
     """
-    choices = ["Anticonvulsivos", "Insulina", "Yodo", "Penicilina", "Antibióticos conexos", "Sulfamidas",
-               "Opioides", "Ninguna"]
+    choices = [
+        "Anticonvulsivos",
+        "Insulina",
+        "Yodo",
+        "Penicilina",
+        "Antibióticos conexos",
+        "Sulfamidas",
+        "Opioides",
+        "Ninguna",
+    ]
     return random.choices(choices, weights=[1, 1, 1, 1, 1, 1, 1, 6])[0]
 
 
@@ -506,7 +611,7 @@ def debt(cost, role):
     """
     if role != "Estudiante":
         return "N/A"
-    choices = [cost + cost/2, cost/2, cost, 0]
+    choices = [cost + cost / 2, cost / 2, cost, 0]
     return random.choices(choices, weights=[1, 2, 2, 6])[0]
 
 
@@ -550,7 +655,11 @@ def failed(sem, role):
     if role != "Estudiante":
         return "N/A"
     poss_lost = [0, 1, 2, 3, 4]
-    return 0 if sem == "2" or "1" else random.choices(poss_lost, weights=[1, 2, 2, 1, 1])[0]
+    return (
+        0
+        if sem == "2" or "1"
+        else random.choices(poss_lost, weights=[1, 2, 2, 1, 1])[0]
+    )
 
 
 def expected_year(in_year, role):
@@ -568,7 +677,15 @@ def birth_country():
     Choose the user's birth country
     :return: Birth country
     """
-    countries = ["España", "Colombia", "Argentina", "Venezuela", "Ecuador", "Peru", "Mexico"]
+    countries = [
+        "España",
+        "Colombia",
+        "Argentina",
+        "Venezuela",
+        "Ecuador",
+        "Peru",
+        "Mexico",
+    ]
     return random.choices(countries, weights=[1, 10, 1, 2, 2, 2, 1])[0]
 
 
@@ -580,8 +697,18 @@ def birth_city(country):
     """
     if country != "Colombia":
         return "N/A"
-    cities = ["Bogotá", "Medellin", "Barranquilla", "Santa Marta", "Cartagena", "Villavicencio", "Chipaque",
-              "Bucaramanga", "Valledupar", "Cucuta"]
+    cities = [
+        "Bogotá",
+        "Medellin",
+        "Barranquilla",
+        "Santa Marta",
+        "Cartagena",
+        "Villavicencio",
+        "Chipaque",
+        "Bucaramanga",
+        "Valledupar",
+        "Cucuta",
+    ]
     return random.choices(cities, weights=[10, 1, 1, 1, 1, 1, 1, 1, 1, 1])[0]
 
 
@@ -599,5 +726,8 @@ def monit(role):
     :param role: User's role
     :return: "SI" if the user made a tutorship, "NO" if not
     """
-    return random.choices(["Si", "No"], weights=[1, 3])[0] if role == "Estudiante" else "N/A"
-
+    return (
+        random.choices(["Si", "No"], weights=[1, 3])[0]
+        if role == "Estudiante"
+        else "N/A"
+    )

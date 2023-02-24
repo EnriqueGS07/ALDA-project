@@ -162,6 +162,5 @@ def create_table(rows):
     table["Ciudad Nacimiento"] = b_cities
     table["Estado civil"] = c_states
     table["Monitor"] = monits
-    table.to_csv('table.csv')
-    table.to_excel('table.xlsx',  index=False)
-
+    table.to_csv("table.csv")
+    table.to_excel("table.xlsx", index=False)
